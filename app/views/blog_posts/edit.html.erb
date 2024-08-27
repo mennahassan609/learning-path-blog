@@ -1,0 +1,41 @@
+<h1>Edit blog post</h1>
+<%= form_with model: @blog_post, local: true do |form| %>
+  <% if form.object.errors.any? %>
+    <div>
+      <% form.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :tags %>
+    <%= form.text_field :tags %>
+  </div>
+
+  <div>
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Blog Post" %>
+  </div>
+    <%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+<% end %>
